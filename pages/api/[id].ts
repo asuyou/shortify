@@ -13,5 +13,6 @@ export default async function handler(
       $gt: new Date(),
     },
   });
-  return res.status(200).json({ data: newLocation });
+  if (!newLocation) return res.status(400).json({ error: true });
+  return res.status(200).json(newLocation);
 }
